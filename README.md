@@ -7,8 +7,8 @@ Database used:Postgre SQL
 
 ------------------------------------------------------------------------------------------------
 
-Task 1:
-Add a column and populate it with successive values and make them primary key
+##Task 1:
+###Add a column and populate it with successive values and make them primary key
 
 alter table if exists mutualfunds.mfdata
     add column mfid real;
