@@ -3,6 +3,7 @@ SQL Project using Mutual Funds Data
 This SQL Project using Mutual Funds in India provides insights into the vast variety and depth of the various schemes offered by the many fundhouses
 
 Dataset Source:https://www.kaggle.com/datasets/ravibarnawal/mutual-funds-india-detailed
+
 Database used:Postgre SQL
 
 ------------------------------------------------------------------------------------------------
