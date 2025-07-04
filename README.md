@@ -30,7 +30,7 @@ where mf.scheme_name=t.scheme_name;
 ## Task 2:
 ### Retrieve all funds where the minimum SIP amount is less than 500 and the rating is 4 or higher.
 
-select scheme_name,min_sip,rating from mfdata where min_sip<500 and rating >=4
+select scheme_name,min_sip,rating from mfdata where min_sip<500 and rating >=4;
 
 ------------------------------------------------------------------------------------------------
 
@@ -38,18 +38,18 @@ select scheme_name,min_sip,rating from mfdata where min_sip<500 and rating >=4
 ### Find the average expense_ratio and sharpe for each category.
 
 select amc_name, avg(exp_ratio) as AVGEXPR, avg(sharpe) as AVGSHARPE from mfdata
-group by amc_name
+group by amc_name;
 
 ------------------------------------------------------------------------------------------------
 
 ## Task 4:
 ### Top 3 Categories of MF
 
-select amc_name, count(scheme_name) from mfdata  group by amc_name order by count(scheme_name) desc limit 3
+select amc_name, count(scheme_name) from mfdata  group by amc_name order by count(scheme_name) desc limit 3;
 
-select category, count(scheme_name) from mfdata group by category order by count(scheme_name) desc limit 3
+select category, count(scheme_name) from mfdata group by category order by count(scheme_name) desc limit 3;
 
-select sub_category, count(scheme_name) from mfdata group by sub_category order by count(scheme_name) desc limit 3
+select sub_category, count(scheme_name) from mfdata group by sub_category order by count(scheme_name) desc limit 3;
 
 ------------------------------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ when rating <=2 then 'Low'
 when rating =3 then 'Medium'
 else 'High' END
 as CategoryRating
-from mfdata
+from mfdata;
 
 ------------------------------------------------------------------------------------------------
 
@@ -83,7 +83,7 @@ select amc_name,scheme_name,avg(fund_size) as AVGFundSize from mfdata as m1
 group by amc_name, scheme_name
 having avg(fund_size)>
 (select avg(fund_size) from mfdata as m2
-where m2.amc_name=m1.amc_name)
+where m2.amc_name=m1.amc_name);
 
 ------------------------------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ with cte as
 (select scheme_name,fund_size,
 ROW_NUMBER() over (order by fund_size desc) as AUMRNK
 from mfdata)
-select scheme_name,fund_size,AUMRNK from cte where AUMRNK=4
+select scheme_name,fund_size,AUMRNK from cte where AUMRNK=4;
 
 ------------------------------------------------------------------------------------------------
 
@@ -105,4 +105,4 @@ with cte as
 (select amc_name, scheme_name,fund_size,
 RANK() over (partition by amc_name order by fund_size desc) as AUMRNK
 from mfdata)
-select amc_name,scheme_name,fund_size,AUMRNK from cte where AUMRNK=2
+select amc_name,scheme_name,fund_size,AUMRNK from cte where AUMRNK=2;
